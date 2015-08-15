@@ -18,13 +18,7 @@
     "envify": "^3.4.0",
     "gulp": "^3.8.11",
     "gulp-postcss": "^4.0.3",
-
-
     "gulp-sass": "^1.3.3",
-
-
-
-
     "gulp-cache": "^0.2.8",
     "gulp-csso": "^1.0.0",
     "gulp-if": "^1.2.5",
@@ -41,5 +35,8 @@
     "main-bower-files": "^2.5.0",
     "opn": "^1.0.1",
     "wiredep": "^2.2.2"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4"
   }
 }
