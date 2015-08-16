@@ -9,6 +9,6 @@
 
 I've published the project here:
 http://codepen.io/h0rhay/full/ZGNQeo/
-Plese not the code here is browser ready. Check out the repo for the real build scaffold.
+Plese note the code here is browser ready. Check out the repo for the real build scaffold.
 
 Enjoy ;)
