@@ -24,7 +24,22 @@
     <h2 id="searchHeader">Tagged: Storm</h2>
     <input type="text" id="searchTerm">
     <button>Go</button>
+
     <div id="flickr"></div>
+
+    <script id="image-template" type="text/template">
+    	{{#items}}
+      <div class="mod">
+        <figure>
+          <div class="imgWrap">
+            <img class="lazy" src="{{media.m}}">
+          </div>
+          <figcaption>{{title}}</figcaption>
+        </figure>
+      </div>
+      {{/items}}
+    </script>
+
 
 
     <!-- build:js js/main.js -->

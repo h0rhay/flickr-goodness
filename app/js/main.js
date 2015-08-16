@@ -1,11 +1,10 @@
 /* jshint devel:true */
 
-console.log('Look at app/js/main.js');
-
 (function (){
 
     'use strict';
     var $ = require('jquery'),
+        Mustache = require('mustache'),
         flickrFun = {};
 
     /*-----------------------------------------------------------------------------------
@@ -57,18 +56,26 @@ console.log('Look at app/js/main.js');
         console.log('front end js running');
     };
 
+    // flickrFun.pollFlickrBuild = function (){
+    //     var imageStack='';
+    //     $.getJSON( 'http://api.flickr.com/services/feeds/photos_public.gne?tags=storm&tagmode=any&format=json&jsoncallback=?', function( data ) {
+    //         $(data.items).each(function(i, o) {
+    //             imageStack += '<div class="mod"><figure><div class="imgWrap"><img class="lazy" src="'+o.media.m+'"/></div> <figcaption>'+o.title+'</figcaption></figure></div>';
+    //             //imageStack += '<div class="mod"><figure><div class="imgWrap"><img class="lazy" src="images/loader.gif" data-src="'+o.media.m+'"/></div> <figcaption>'+o.title+'</figcaption></figure></div>';
+    //         });
+    //         if (imageStack==='') {
+    //             $('#flickr').html('Error');
+    //             return;
+    //         }
+    //         $('#flickr').append(imageStack);
+    //     });
+    // };
+
     flickrFun.pollFlickrBuild = function (){
-        var imageStack='';
-        $.getJSON( 'http://api.flickr.com/services/feeds/photos_public.gne?tags=storm&tagmode=any&format=json&jsoncallback=?', function( data ) {
-            $(data.items).each(function(i, o) {
-                imageStack += '<div class="mod"><figure><div class="imgWrap"><img class="lazy" src="'+o.media.m+'"/></div> <figcaption>'+o.title+'</figcaption></figure></div>';
-                //imageStack += '<div class="mod"><figure><div class="imgWrap"><img class="lazy" src="images/loader.gif" data-src="'+o.media.m+'"/></div> <figcaption>'+o.title+'</figcaption></figure></div>';
-            });
-            if (imageStack==='') {
-                $('#flickr').html('Error');
-                return;
-            }
-            $('#flickr').append(imageStack);
+        $.getJSON('http://api.flickr.com/services/feeds/photos_public.gne?tags=storm&tagmode=any&format=json&jsoncallback=?', function(data) {
+            var template = $('#image-template').html();
+            var info = Mustache.to_html(template, data);
+            $('#flickr').html(info);
         });
     };
 
