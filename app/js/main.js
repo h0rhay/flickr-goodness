@@ -5,7 +5,7 @@
     'use strict';
     var $ = require('jquery'),
         Mustache = require('mustache'),
-        imageFeed = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=billmurray&tagmode=any&format=json&jsoncallback=?',
+        imageFeed = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=storm&tagmode=any&format=json&jsoncallback=?',
         flickrFun = {};
 
     /*-----------------------------------------------------------------------------------
@@ -18,6 +18,8 @@
         $(window).on('resize', flickrFun.resize);
 
         $(window).on('load', flickrFun.load);
+
+        $(window).on('scroll', flickrFun.scroll);
     };
 
 
@@ -28,6 +30,7 @@
     flickrFun.ready = function () {
         flickrFun.myFunc();
         flickrFun.pollFlickrBuild();
+        flickrFun.swapSrc();
         $('html').on('click','#fireSearch', flickrFun.getSetSearch);
         $('html').on('keypress', function(e) {
             if(e.which === 13) {
@@ -53,6 +56,14 @@
     flickrFun.load = function () {
         //flickrFun.myFunction1();
 
+    };
+
+    /*-----------------------------------------------------------------------------------
+    :: SCROLL
+    ---------------------------------------------------------------------------------- */
+
+    flickrFun.scroll = function () {
+        flickrFun.swapSrc();
     };
 
 
@@ -85,6 +96,7 @@
             var template = $('#image-template').html(),
                 info = Mustache.to_html(template, data);
             $('#flickr').html(info);
+            flickrFun.swapSrc();
         });
     };
 
@@ -95,6 +107,31 @@
         searchHeader.text(searchTerm);
         flickrFun.pollFlickrBuild();
     };
+
+    flickrFun.checkViz = function ( elm, ev ) {
+        var ev = ev || 'visible';
+        var vpH = $(window).height(), // Viewport Height
+            st = $(window).scrollTop(), // Scroll Top
+            y = $(elm).offset().top,
+            elementHeight = $(elm).height();
+
+        if (ev === 'visible') return ((y < (vpH + st)) && (y > (st - elementHeight)));
+        if (ev === 'above') return ((y < (vpH + st)));
+    }
+
+    flickrFun.swapSrc = function(){
+        console.log('swapSrc running');
+        $('.mod').each(function(i,o){
+            var $this = $(o),
+                $thisImg = $this.find('img'),
+                nuImage = $thisImg.attr('data-src');
+            if (flickrFun.checkViz($this)) {
+                console.log('visible');
+                console.log(nuImage);
+                $thisImg.attr('src', nuImage);
+            }
+        });
+    }
 
     return flickrFun.init();
 

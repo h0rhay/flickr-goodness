@@ -21,26 +21,26 @@
   </head>
   <body>
     <h1>Latest from Flickr</h1>
-    <h2 id="searchHeader">Tagged: <span>Bill Murray</span></h2>
+    <h2 id="searchHeader">Tagged: <span>Storm</span></h2>
     <input type="text" id="searchTerm">
     <button id="fireSearch">Go</button>
 
     <div id="flickr"></div>
 
+    <!--Image Lister-->
     <script id="image-template" type="text/template">
     	{{#items}}
       <div class="mod">
         <figure>
           <div class="imgWrap">
-            <img class="lazy" src="{{media.m}}">
+            <img class="lazy" src="images/loader.gif" data-src="{{media.m}}">
           </div>
           <figcaption>{{title}}</figcaption>
         </figure>
       </div>
       {{/items}}
     </script>
-
-
+    <!-- /Image Lister-->
 
     <!-- build:js js/main.js -->
     <script src="js/main.js"></script>
