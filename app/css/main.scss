@@ -2,9 +2,10 @@
 // endbower
 @import "global";
 @import "grid";
+@import "mixins";
 @import "typography";
 
-body:before {
-  content: "I'm at 'app/css/main.scss";
-  background:dodgerblue;
+
+body{
+
 }

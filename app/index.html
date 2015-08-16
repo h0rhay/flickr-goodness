@@ -20,13 +20,15 @@
     <!-- endbuild -->
   </head>
   <body>
-    <h1>Latest from Flickr</h1>
-    <h2 id="searchHeader">Tagged: <span>Storm</span></h2>
-    <input type="text" id="searchTerm">
-    <button id="fireSearch">Go</button>
+    <div class="flickrWrap">
+      <h1>Latest from Flickr</h1>
+      <h2 id="searchHeader">Tagged: <span>Storm</span></h2>
+      <input type="text" id="searchTerm">
+      <button id="fireSearch">Go</button>
 
-    <div id="flickr"></div>
+      <div id="flickr"></div>
 
+    </div>
     <!--Image Lister-->
     <script id="image-template" type="text/template">
     	{{#items}}

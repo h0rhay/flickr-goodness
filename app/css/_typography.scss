@@ -1,3 +1,16 @@
-h1{
-  font-size: 96px;
+@import url(http://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans);
+
+$headings: 'Fjalla One', sans-serif;
+$bodyFont: 'Open Sans', sans-serif;
+
+body, p, a, input, button {
+  font-family: $bodyFont;
+  font-weight: normal;
+  @include font-size(16px);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headings;
+  font-weight: normal;
+  @include font-size(32px);
 }
