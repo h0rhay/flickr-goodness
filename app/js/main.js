@@ -5,7 +5,7 @@
     'use strict';
     var $ = require('jquery'),
         Mustache = require('mustache'),
-        imageFeed = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=storm&tagmode=any&format=json&jsoncallback=?',
+        imageFeed = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=kitesurf&tagmode=any&format=json&jsoncallback=?',
         flickrFun = {};
 
     /*-----------------------------------------------------------------------------------
@@ -94,14 +94,29 @@
             $('#flickr').html(info);
             flickrFun.swapSrc();
             flickrFun.removeUnwanted();
+            flickrFun.fixAuthorLinks();
         });
     };
 
-    flickrFun.removeUnwanted = function(){
-        $('.flickrAuthor').each(function(i,o){
+    flickrFun.removeUnwanted = function (){
+        $('.flickrAuthor').each(function (i,o){
             var $this = $(o);
             if($this.html().indexOf("nobody@flickr.com ")!=-1)
             $this.html($this.html().replace("nobody@flickr.com ", ""));
+        });
+    }
+
+    // A quick fix to get around flickr API's 'nobody@flickr.com' security policy
+    // This chops off the image id from the title link creating a usable author link for now.. ;)
+    flickrFun.fixAuthorLinks = function (){
+        var goodLink = '';
+        $('.flickrTitle').each(function(i,o){
+            goodLink = $(o).attr('href');
+            goodLink = (goodLink.substr(0, goodLink.length - 1));
+            goodLink = (goodLink.substr(0, goodLink.lastIndexOf('/')));
+        });
+        $('.flickrAuthor').each(function(i,o){
+            $(o).attr('href', goodLink);
         });
     }
 
