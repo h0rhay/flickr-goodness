@@ -5,8 +5,8 @@ console.log('Look at app/js/main.js');
 (function (){
 
     'use strict';
-    var $ = require('jquery');
-    var flickrFun = {};
+    var $ = require('jquery'),
+        flickrFun = {};
 
     /*-----------------------------------------------------------------------------------
     :: INIT
