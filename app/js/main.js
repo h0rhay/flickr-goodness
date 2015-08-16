@@ -28,7 +28,6 @@
     ---------------------------------------------------------------------------------- */
 
     flickrFun.ready = function () {
-        flickrFun.myFunc();
         flickrFun.pollFlickrBuild();
         flickrFun.swapSrc();
         $('html').on('click','#fireSearch', flickrFun.getSetSearch);
@@ -70,9 +69,6 @@
     /*-----------------------------------------------------------------------------------
     :: MY FUNCTIONS
     ---------------------------------------------------------------------------------- */
-    flickrFun.myFunc = function () {
-        console.log('front end js running');
-    };
 
     /*---  Way of the Jquery ---*/
     // flickrFun.pollFlickrBuild = function (){
@@ -97,8 +93,17 @@
                 info = Mustache.to_html(template, data);
             $('#flickr').html(info);
             flickrFun.swapSrc();
+            flickrFun.removeUnwanted();
         });
     };
+
+    flickrFun.removeUnwanted = function(){
+        $('.flickrAuthor').each(function(i,o){
+            var $this = $(o);
+            if($this.html().indexOf("nobody@flickr.com ")!=-1)
+            $this.html($this.html().replace("nobody@flickr.com ", ""));
+        });
+    }
 
     flickrFun.getSetSearch = function (){
         var searchTerm = $('#searchTerm').val(),
