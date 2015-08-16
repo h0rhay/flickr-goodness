@@ -1,11 +1,51 @@
 // bower:scss
 // endbower
 @import "global";
-@import "grid";
 @import "mixins";
+@import "grid";
 @import "typography";
 
+.button {
+	@include button(#1E90FF);
+  color:#fff;
+}
 
-body{
+.flickrWrap{
+  #flickr{
+    margin-top:$value;
+  }
+  overflow:hidden;
+  .searchWrap{
+    margin-top:$value;
+    input, button {
+      width:30%;
+      border-radius: 3px;
+      @include bp-small {
+        width:90%;
+        &.button{
+          margin-top:$value/2;
+        }
+      }
+    }
+  }
 
+}
+
+.mod{
+  figcaption{
+    background:tomato;
+    min-height:2.5em;
+    display: table;
+    background:$panelColor;
+    span{
+      width:100%;
+      display: table-cell;
+      vertical-align: middle;
+      @include font-size(12px);
+      a{
+        @include font-size(12px);
+        color:$bodyColor;
+      }
+    }
+  }
 }

@@ -7,10 +7,20 @@ body, p, a, input, button {
   font-family: $bodyFont;
   font-weight: normal;
   @include font-size(16px);
+  color:$bodyColor;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $headings;
   font-weight: normal;
   @include font-size(32px);
+  color:$bodyColor;
+}
+
+h1 {
+  @include font-size(64px);
+  margin-top:$value;
+  @include bp-small {
+    @include font-size(48px);
+  }
 }

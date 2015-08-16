@@ -1,4 +1,33 @@
 //-----------------------------
+//:: Global value
+//-----------------------------
+$value: 32px;
+
+//-----------------------------
+//:: Colours
+//-----------------------------
+$bodyColor: #333333;
+$panelColor: #c9c9c9;
+$accentColor: dodgerBlue;
+
+//-----------------------------
+//:: Button
+//-----------------------------
+@mixin button($color) {
+	background-color: $color;
+	border: 1px solid mix(black, $color, 25%);
+	border-radius: 3px;
+	padding: .25em .5em;
+  width:100%;
+
+	&:hover {
+		cursor: pointer;
+		background-color: mix(black, $color, 15%);
+		border-color: mix(black, $color, 40%);
+	}
+}
+
+//-----------------------------
 //:: Font size rem // @include font-size(16px);
 //-----------------------------
 @function calculateRem($size) {
@@ -29,19 +58,19 @@
 }
 
 @mixin bp-large {
-  @media only screen and (max-width: 60em) {
+  @media only screen and (max-width: 90em) {
     @content;
   }
 }
 
 @mixin bp-medium {
-  @media only screen and (max-width: 40em) {
+  @media only screen and (max-width: 60em) {
     @content;
   }
 }
 
 @mixin bp-small {
-  @media only screen and (max-width: 30em) {
+  @media only screen and (max-width: 40em) {
     @content;
   }
 }

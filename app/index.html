@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flickr Fun</title>
 
-    <!-- build:css css/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-
     <!-- build:css css/main.css -->
     <link rel="stylesheet" href="css/main.css">
     <!-- endbuild -->
@@ -23,11 +18,11 @@
     <div class="flickrWrap">
       <h1>Latest from Flickr</h1>
       <h2 id="searchHeader">Tagged: <span>Storm</span></h2>
-      <input type="text" id="searchTerm">
-      <button id="fireSearch">Go</button>
-
+      <div class="searchWrap">
+        <input type="text" id="searchTerm">
+        <button id="fireSearch" class="button">Go</button>
+      </div>
       <div id="flickr"></div>
-
     </div>
     <!--Image Lister-->
     <script id="image-template" type="text/template">
@@ -35,9 +30,13 @@
       <div class="mod">
         <figure>
           <div class="imgWrap">
-            <img class="lazy" src="images/loader.gif" data-src="{{media.m}}">
+            <img class="lazy ri" src="images/loader.gif" data-src="{{media.m}}">
           </div>
-          <figcaption><a class="flickrTitle" href="{{link}}" target="_blank">{{title}}</a> by <a class="flickrAuthor" href="{{author}}" target="_blank">{{author}}</a></figcaption>
+          <figcaption>
+            <span>
+              <a class="flickrTitle" href="{{link}}" target="_blank">{{title}}</a> by <a class="flickrAuthor" href="{{author}}" target="_blank">{{author}}</a>
+            </span>
+          </figcaption>
         </figure>
       </div>
       {{/items}}
