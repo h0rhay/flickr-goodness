@@ -20,9 +20,6 @@
             height:100%;
             overflow:hidden;
         }
-        .imgWrap{
-            //width:101%;
-        }
         figure{
             border:3px solid #cccccc;;
             border-radius: 3px;
@@ -33,8 +30,7 @@
             top: 10%;
             left: 10%;
         }
-        img:empty
-        {
+        img:empty{ // The real deal resp img allowing for portrait too..
             top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
