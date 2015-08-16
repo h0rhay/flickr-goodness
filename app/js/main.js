@@ -5,7 +5,7 @@
     'use strict';
     var $ = require('jquery'),
         Mustache = require('mustache'),
-        imageFeed = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=kitesurf&tagmode=any&format=json&jsoncallback=?',
+        imageFeed = 'http://api.flickr.com/services/feeds/photos_public.gne?tags=storm&tagmode=any&format=json&jsoncallback=?',
         flickrFun = {};
 
     /*-----------------------------------------------------------------------------------
@@ -114,9 +114,7 @@
             goodLink = $(o).attr('href');
             goodLink = (goodLink.substr(0, goodLink.length - 1));
             goodLink = (goodLink.substr(0, goodLink.lastIndexOf('/')));
-        });
-        $('.flickrAuthor').each(function(i,o){
-            $(o).attr('href', goodLink);
+            $(o).next().attr('href',goodLink);
         });
     }
 
@@ -140,14 +138,11 @@
     }
 
     flickrFun.swapSrc = function(){
-        console.log('swapSrc running');
         $('.mod').each(function(i,o){
             var $this = $(o),
                 $thisImg = $this.find('img'),
                 nuImage = $thisImg.attr('data-src');
             if (flickrFun.checkViz($this)) {
-                console.log('visible');
-                console.log(nuImage);
                 $thisImg.attr('src', nuImage);
             }
         });
