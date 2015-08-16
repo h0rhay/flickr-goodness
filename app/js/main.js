@@ -44,7 +44,7 @@
     ---------------------------------------------------------------------------------- */
 
     flickrFun.resize = function () {
-        //flickrFun.myFunction1();
+        //flickrFun.myFunx();
     };
 
 
@@ -53,7 +53,7 @@
     ---------------------------------------------------------------------------------- */
 
     flickrFun.load = function () {
-        //flickrFun.myFunction1();
+        //flickrFun.myFunx();
 
     };
 
@@ -98,6 +98,7 @@
         });
     };
 
+    // Get rid of the nobody@flickr business for author links
     flickrFun.removeUnwanted = function (){
         $('.flickrAuthor').each(function (i,o){
             var $this = $(o);
@@ -118,6 +119,7 @@
         });
     }
 
+    // Fire search
     flickrFun.getSetSearch = function (){
         var searchTerm = $('#searchTerm').val(),
             searchHeader = $('#searchHeader span');
@@ -126,6 +128,7 @@
         flickrFun.pollFlickrBuild();
     };
 
+    // Check if viz for lazy loading
     flickrFun.checkViz = function ( elm, ev ) {
         var ev = ev || 'visible';
         var vpH = $(window).height(), // Viewport Height
@@ -137,6 +140,7 @@
         if (ev === 'above') return ((y < (vpH + st)));
     }
 
+    // Lazy loading - Swap src 
     flickrFun.swapSrc = function(){
         $('.mod').each(function(i,o){
             var $this = $(o),
